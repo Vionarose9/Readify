@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 // Connect to DB
 require("./conn/conn");
 
 // Middleware
 app.use(express.json()); 
+app.use(cors());
 
 // Test route
 app.get('/', (req, res) => {
