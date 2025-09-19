@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import Hero from "../components/Home/Hero";
 
-function Home() {
+const Home = () => {
   return (
-    <div>
-      <h1 className='h-screen'>Home</h1>
+    <div className="px-10 py-8">
+      <Hero />
     </div>
   );
-}
+};
 
 export default Home;

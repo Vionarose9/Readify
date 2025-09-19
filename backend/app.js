@@ -23,6 +23,12 @@ app.use("/api/v1",bookRoutes);
 const favourite=require("./routes/favourite.js");
 app.use("/api/v1",favourite);
 
+const cart=require("./routes/cart.js");
+app.use("/api/v1",cart);
+
+const order=require("./routes/order.js");
+app.use("/api/v1",order);
+
 // Start server
 app.listen(process.env.PORT, () => {
     console.log(`App listening on port ${process.env.PORT}`);
