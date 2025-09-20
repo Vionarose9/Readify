@@ -3,34 +3,29 @@ import { Link } from "react-router-dom";
 
 const BookCard = ({ data }) => {
   return (
-    // 1. CORRECTED the URL to the one you want
     <Link to={`/view-book-details/${data._id}`}>
-      <div className="bg-zinc-800 p-4 rounded-lg flex flex-col justify-between h-full shadow-md hover:shadow-xl transition-shadow duration-300">
-        <div>
-          {/* 2. REMOVED the extra, empty <Link> from here */}
-          
-          {/* Book Cover Image */}
-          <div className="w-full h-64 bg-zinc-700 rounded-md mb-4">
-            <img
-              src={data.url}
-              alt={data.title}
-              className="w-full h-full object-cover rounded-md"
-            />
-          </div>
+      {/* Main card container with hover effects */}
+      <div className="bg-zinc-800 p-4 rounded-lg flex flex-col h-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">
+        {/* Fixed image container with proper aspect ratio */}
+        <div className="aspect-[2/3] w-full mb-4 rounded-md overflow-hidden">
+          <img
+            src={data.url}
+            alt={data.title}
+            // 'object-cover' ensures the image fills the space without stretching or squashing.
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          {/* Book Title */}
+        <div className="flex flex-col flex-grow">
+          {/* Title with truncation to prevent breaking the layout */}
           <h3
-            className="text-xl font-semibold text-white h-14"
+            className="text-xl font-semibold text-white truncate"
             title={data.title}
           >
             {data.title}
           </h3>
-        </div>
-
-        {/* Book Author and Price */}
-        <div className="mt-2">
-          <p className="text-zinc-400">by {data.author}</p>
-          <p className="mt-2 text-xl font-bold text-white">₹ {data.price}</p>
+          <p className="text-zinc-400 mt-1">by {data.author}</p>
+          <p className="mt-auto text-xl font-bold text-white">₹ {data.price}</p>
         </div>
       </div>
     </Link>

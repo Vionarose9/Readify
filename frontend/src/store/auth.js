@@ -4,25 +4,25 @@ const authSlice = createSlice({
     name: "auth",
     initialState: {
         isLoggedIn: false,
-        role: "user", // Default role
+        role: "user",
     },
     reducers: {
         login(state, action) {
             state.isLoggedIn = true;
-            // When logging in, we get the role from the API response payload
+            // This is the critical part. It checks if the login action
+            // was called with data (the payload from your API) and
+            // updates the role accordingly.
             if (action.payload) {
                 state.role = action.payload.role;
             }
         },
         logout(state) {
             state.isLoggedIn = false;
-            state.role = "user"; // Reset role on logout
+            state.role = "user";
         },
-        // --- ACTION FROM THE SCREENSHOT ---
-        // This is used only to restore the role from localStorage
+        // This is used by App.jsx to restore the role on page refresh
         changeRole(state, action) {
-            const role = action.payload;
-            state.role = role;
+            state.role = action.payload;
         },
     },
 });
